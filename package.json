@@ -4,6 +4,7 @@
   "description": "Website of FreeEIS, the next generation of the EIS framework",
   "productName": "",
   "author": "zhiquan <x.zhiquan@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "start": "env=development quasar dev",
     "start:test": "env=test quasar dev",

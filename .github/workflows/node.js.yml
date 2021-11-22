@@ -28,3 +28,10 @@ jobs:
         cache: 'yarn'
     - run: yarn add @quasar/cli
     - run: yarn build:prod
+    - name: publish
+      uses: freeeis/freeeis.github.io@master
+      env:
+        REPO: freeeis/freeeis.github.io
+        BRANCH: main
+        FOLDER: dist/spa        
+        SSH_PRIVATE_KEY: ${{ secrets.publish }}

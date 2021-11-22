@@ -1,11 +1,13 @@
 import { defineComponent, h } from 'vue';
+import { useMeta} from 'quasar';
 
 export default defineComponent({
   name: "FreeWebsite",
-  meta: {
-    title: 'Free EIS - The next generation of the EIS framework.'
-  },
   setup() {
+    useMeta({
+      title: 'Free EIS - The next generation of the EIS framework.',
+    });
+
     return () =>
       h('div', {
         class: 'absolute-center q-pb-xl'

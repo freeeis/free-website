@@ -29,7 +29,7 @@ jobs:
     - run: yarn add @quasar/cli
     - run: yarn build:prod
     - name: publish
-      uses: freeeis/freeeis.github.io@master
+      uses: s0/git-publish-subdir-action@master
       env:
         REPO: freeeis/freeeis.github.io
         BRANCH: main

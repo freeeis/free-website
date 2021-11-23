@@ -29,9 +29,9 @@ jobs:
     - run: yarn add @quasar/cli
     - run: yarn build:prod
     - name: publish
-      uses: s0/git-publish-subdir-action@master
+      uses: s0/git-publish-subdir-action@develop
       env:
-        REPO: freeeis.github.io
+        REPO: git@github.com:freeeis/freeeis.github.io.git
         BRANCH: main
         FOLDER: dist/spa        
         SSH_PRIVATE_KEY: ${{ secrets.publish }}

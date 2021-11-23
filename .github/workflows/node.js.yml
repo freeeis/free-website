@@ -31,7 +31,7 @@ jobs:
     - name: publish
       uses: s0/git-publish-subdir-action@master
       env:
-        REPO: freeeis/freeeis.github.io
+        REPO: freeeis.github.io
         BRANCH: main
         FOLDER: dist/spa        
         SSH_PRIVATE_KEY: ${{ secrets.publish }}

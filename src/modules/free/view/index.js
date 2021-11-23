@@ -18,7 +18,7 @@ export default defineComponent({
         }, 'FREE EIS'),
         h('div', {
           class: 'text-center text-h6 text-grey-5'
-        }, 'The next generation of the EIS platform')
+        }, 'The next generation of the EIS platform!')
       ]
     )
   }

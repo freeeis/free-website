@@ -34,4 +34,4 @@ jobs:
         REPO: git@github.com:freeeis/freeeis.github.io.git
         BRANCH: main
         FOLDER: dist/spa        
-        SSH_PRIVATE_KEY: ${{ secrets.CI }}
+        SSH_PRIVATE_KEY: ${{ secrets.DEVELOP_PRIVATE_KEY }}

@@ -5,7 +5,7 @@ export default defineComponent({
   name: "FreeWebsite",
   setup() {
     useMeta({
-      title: 'Free EIS - The next generation of the EIS framework.',
+      title: 'Free EIS - Build your enterprise information system freely.',
     });
 
     return () =>
@@ -18,7 +18,7 @@ export default defineComponent({
         }, 'FREE EIS'),
         h('div', {
           class: 'text-center text-h6 text-grey-5'
-        }, 'The next generation of the EIS platform!')
+        }, 'Build your enterprise information system freely!')
       ]
     )
   }

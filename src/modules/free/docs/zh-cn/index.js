@@ -1,7 +1,9 @@
-import guide from './guide';
-import api from './api';
+import fe from './fe';
+import be from './be';
+import intro from './intro';
 
 export default {
-  guide,
-  api,
+  fe,
+  be,
+  intro,
 }

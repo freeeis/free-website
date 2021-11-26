@@ -1,1 +1,0 @@
-export default 'eng api'

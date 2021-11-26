@@ -4,8 +4,8 @@
       <q-expansion-item
         v-for="(menu, idx) in menus" :key="idx"
         :icon="menu.icon"
-        :label="menu.label"
-        :caption="menu.caption"
+        :label="$t(menu.label || '')"
+        :caption="$t(menu.caption||'')"
         :default-opened="idx === 0"
         @click="menu.link && $router.push(menu.link)"
         >
@@ -14,8 +14,13 @@
           v-for="(cmenu, cidx) in menu.children || []" :key="cidx"
           @click="cmenu.link && $router.push(cmenu.link)"
           class="q-ml-lg">
-          {{$t(cmenu.label)}}
+          {{$t(cmenu.label || '')}}
         </q-item>
+        <!-- <div
+          v-for="(cmenu, cidx) in menu.children || []" :key="cidx">
+        <a
+          :href="`fe#${cmenu.label || ''}`">{{cmenu.label}}</a>
+          </div> -->
       </q-expansion-item>
     </q-list>
   </q-drawer>
@@ -34,35 +39,35 @@ export default defineComponent({
     return {
       menus: [
         {
-          label: 'Guide',
-          link: '/guide',
+          label: 'FE',
+          link: '/fe',
           icon: '',
           children: [
             {
-              label: 'c1',
+              label: 'Introduction',
               icon: '',
-              link: '/guide#1',
+              link: '/fe#Introduction',
+            },
+            {
+              label: '安装运行',
+              icon: '',
+              link: '/fe#安装运行',
             },
             {
               label: 'c1',
               icon: '',
-              link: '/guide#1',
+              link: '/fe#1',
             },
             {
               label: 'c1',
               icon: '',
-              link: '/guide#1',
-            },
-            {
-              label: 'c1',
-              icon: '',
-              link: '/guide#1',
+              link: '/fe#1',
             }
           ]
         },
         {
-          label: 'Api',
-          link: '/interface'
+          label: 'BE',
+          link: '/be'
         }
       ]
     }

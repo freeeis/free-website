@@ -30,6 +30,7 @@
     "core-js": "^3.18.2",
     "free-fe-core": "https://github.com/freeeis/free-fe-core.git",
     "free-fe-demo": "https://github.com/freeeis/free-fe-demo.git",
+    "highlight.js": "^11.3.1",
     "marked": "^4.0.5",
     "moment": "^2.29.1",
     "path": "^0.12.7",

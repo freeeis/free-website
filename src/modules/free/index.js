@@ -11,21 +11,33 @@ export default {
           },
         },
         {
-          path: 'guide',
+          path: 'intro',
           components: {
-            drawer: () => import('./view/components/drawer.vue'),
-            page: () => import('./view/guide')
-          }
-        },
-        {
-          path: 'interface',
-          components: {
-            drawer: () => import('./view/components/drawer.vue'),
+            // drawer: () => import('./view/components/drawer.vue'),
             page: () => import('./view/guide')
           },
           props: {
             page: {
-              target: 'api'
+              target: 'intro'
+            }
+          }
+        },
+        {
+          path: 'fe',
+          components: {
+            // drawer: () => import('./view/components/drawer.vue'),
+            page: () => import('./view/guide')
+          }
+        },
+        {
+          path: 'be',
+          components: {
+            // drawer: () => import('./view/components/drawer.vue'),
+            page: () => import('./view/guide')
+          },
+          props: {
+            page: {
+              target: 'be'
             }
           }
         }

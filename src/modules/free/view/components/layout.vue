@@ -12,8 +12,9 @@
         </q-toolbar-title>
         <q-space></q-space>
         <q-btn :label="$t('Home')" flat dense to="/" class="q-mx-sm" icon="home"></q-btn>
-        <q-btn :label="$t('Guide')" flat dense to="/guide" class="q-mx-sm" icon="article"></q-btn>
-        <q-btn :label="$t('Api')" flat dense to="/interface" class="q-mx-sm" icon="api"></q-btn>
+        <q-btn :label="$t('Introduction')" flat dense to="/intro" class="q-mx-sm" icon="preview"></q-btn>
+        <q-btn :label="$t('FE')" flat dense to="/fe" class="q-mx-sm" icon="article"></q-btn>
+        <q-btn :label="$t('BE')" flat dense to="/be" class="q-mx-sm" icon="api"></q-btn>
 
         <q-btn :label="$t('Locale')" flat dense class="q-mx-sm" icon="language">
           <q-menu>

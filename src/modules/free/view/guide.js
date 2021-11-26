@@ -98,7 +98,7 @@ export default defineComponent({
         h('div', {
           class:"contribute-info q-pa-md q-ma-lg text-center",
           style: 'border: 1px solid #E1E1E1'
-        }, ['发现了错误或者想要为文档做贡献？ 请到 ', h('a', {href: 'https://github.com/freeeis'}, 'Github'), ' 告诉我们。 '])
+        }, ['发现了错误或者想要为文档做贡献？ 请到 ', h('a', {href: 'https://github.com/freeeis/free-website/issues'}, 'Github'), ' 告诉我们。 '])
       ]
     )
   }

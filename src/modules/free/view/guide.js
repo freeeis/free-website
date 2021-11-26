@@ -1,4 +1,5 @@
 import { defineComponent, h, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useMeta } from 'quasar';
 import { marked } from 'marked';
 
@@ -63,6 +64,8 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const i18n = useI18n();
+
     marked.setOptions ({
       renderer: new marked.Renderer(),
       gfm: true ,
@@ -98,7 +101,7 @@ export default defineComponent({
         h('div', {
           class:"contribute-info q-pa-md q-ma-lg text-center",
           style: 'border: 1px solid #E1E1E1'
-        }, ['发现了错误或者想要为文档做贡献？ 请到 ', h('a', {href: 'https://github.com/freeeis/free-website/issues'}, 'Github'), ' 告诉我们。 '])
+        }, [i18n.t('Contribute1'), h('a', {href: 'https://github.com/freeeis/free-website/issues'}, 'Github'), i18n.t('Contribute2')])
       ]
     )
   }

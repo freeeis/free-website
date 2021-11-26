@@ -5,4 +5,6 @@ export default {
   Introduction: '介绍',
   FE: '前端',
   BE: '后端',
+  Contribute1: '发现了错误或者想要为文档做贡献？ 请到 ',
+  Contribute2: ' 告诉我们。非常感谢！ ',
 }

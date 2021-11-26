@@ -5,4 +5,6 @@ export default {
   Introduction: 'Introduction',
   FE: 'Frontend',
   BE: 'Backend',
+  Contribute1: 'Caught a mistake or want to contribute to the documentation? Please go ',
+  Contribute2: ' to tell us. Thanks! ',
 }

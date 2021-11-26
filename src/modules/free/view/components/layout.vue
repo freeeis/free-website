@@ -2,11 +2,11 @@
   <q-layout view="hHh lpR fFf">
     <q-header reveal bordered class="bg-white text-primary">
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+        <!-- <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" /> -->
 
-        <q-toolbar-title class="cursor-pointer" @click="$router.push('/')">
-          <q-avatar>
-            <img src="">
+        <q-toolbar-title class="cursor-pointer row items-center" @click="$router.push('/')">
+          <q-avatar class="q-mr-sm">
+            <img src="logo.png" style="border: 1px solid #0078DC30; border-radius: 50%;" >
           </q-avatar>
           FreeEIS
         </q-toolbar-title>

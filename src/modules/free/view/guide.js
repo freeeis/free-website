@@ -4,12 +4,14 @@ import { useMeta } from 'quasar';
 import { marked } from 'marked';
 
 import { Quasar } from 'quasar';
-import store from '@/store';
+import useAppStore from '@/stores/app';
 
 import docs from '../docs';
 import HtmlContent from '../view/components/htmlContent.vue';
 
 import './vue.css';
+
+const store = useAppStore();
 
 // const tocObj = {
 //   add: function(text, level) {
@@ -88,7 +90,7 @@ export default defineComponent({
       title: 'Free EIS - Build your enterprise information system freely.',
     });
 
-    const locale = computed(() => store().getters['app/getLocale'] || Quasar.lang.getLocale().toLowerCase() || 'zh-cn');
+    const locale = computed(() => store.locale || Quasar.lang.getLocale().toLowerCase() || 'zh-cn');
 
     return () =>
       h('div', {

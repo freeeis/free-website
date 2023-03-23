@@ -41,17 +41,18 @@
 
 <script>
 import { defineComponent, ref, getCurrentInstance } from 'vue';
-import store from '@/store';
+import useAppStore from '@/stores/app';
 
 export default defineComponent({
   name: 'NormalLayout',
   setup () {
     const vm = getCurrentInstance();
     const leftDrawerOpen = ref(false);
+    const store = useAppStore();
 
     const localeChanged = (l) => {
       vm.proxy.$i18n.locale = l;
-      store().commit('app/SET_LOCALE', l);
+      store.SET_LOCALE(l)
     }
 
     return {
@@ -62,7 +63,7 @@ export default defineComponent({
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
-      }
+      },
     }
   }
 })

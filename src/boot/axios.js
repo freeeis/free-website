@@ -3,8 +3,7 @@ import axios from 'axios'
 import config from '../config';
 import { Notify } from 'quasar';
 
-import Store from '@/store';
-const store = Store();
+import useAppStore from '@/stores/app';
 
 let requests;
 const Mocks = [];
@@ -152,8 +151,10 @@ export default boot(({ app }) => {
       },
     },
     canI: async (url) => {
-      if (store && store.state.app.canI) {
-        const storedCanI = store.state.app.canI.find((ci) => ci && ci.url === url);
+      const store = useAppStore();
+
+      if (store && store.canI) {
+        const storedCanI = store.canI.find((ci) => ci && ci.url === url);
         if (storedCanI && typeof storedCanI.can !== 'undefined') {
           return new Promise(((resolve) => {
             resolve(!!storedCanI.can);
@@ -170,7 +171,7 @@ export default boot(({ app }) => {
         for (let i = 0; i < urlList.length; i += 1) {
           const u = urlList[i];
 
-          store.commit('app/ADD_CANI', { url: u, can: (can[i] || false) });
+          store.ADD_CANI({ url: u, can: (can[i] || false) });
         }
 
         if (can.length === 1)

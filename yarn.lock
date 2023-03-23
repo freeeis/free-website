@@ -3373,6 +3373,11 @@ fraction.js@^4.2.0:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
+free-fe-core@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/free-fe-core/-/free-fe-core-0.0.4.tgz#94de02405650097f9b0a77540317b1a9ef808187"
+  integrity sha512-YnT3H8GL/mjcIM9TCczzNOpP7fi+ZSOJsVxrkAoGKvR5HljfTpoHRCJZRsE9TD2XG1RCjPAdbmkn4ftQpqrsiQ==
+
 fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"

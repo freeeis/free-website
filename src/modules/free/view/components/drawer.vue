@@ -34,42 +34,10 @@ export default defineComponent({
   props: {
     above: Boolean,
     open: Boolean,
+    menus: Array,
   },
   data(){
     return {
-      menus: [
-        {
-          label: 'FE',
-          link: '/fe',
-          icon: '',
-          children: [
-            {
-              label: 'Introduction',
-              icon: '',
-              link: '/fe#Introduction',
-            },
-            {
-              label: '安装运行',
-              icon: '',
-              link: '/fe#安装运行',
-            },
-            {
-              label: 'c1',
-              icon: '',
-              link: '/fe#1',
-            },
-            {
-              label: 'c1',
-              icon: '',
-              link: '/fe#1',
-            }
-          ]
-        },
-        {
-          label: 'BE',
-          link: '/be'
-        }
-      ]
     }
   },
   setup(props) {

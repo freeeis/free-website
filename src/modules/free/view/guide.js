@@ -1,17 +1,15 @@
-import { defineComponent, h, computed } from 'vue';
+import { defineComponent, h } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useMeta } from 'quasar';
 import { marked } from 'marked';
 
-import { Quasar } from 'quasar';
-import useAppStore from '@/stores/app';
+// import useAppStore from '@/stores/app';
 
 import docs from '../docs';
 import HtmlContent from '../view/components/htmlContent.vue';
 
 import './vue.css';
 
-const store = useAppStore();
+// const store = useAppStore();
 
 // const tocObj = {
 //   add: function(text, level) {
@@ -84,13 +82,7 @@ export default defineComponent({
         // const anchor = tocObj.add(text, level);
         return `<a id=${anchor} class="anchor-fix"></a><h${level}>${text}</h${level}>\n`
       }
-      });
-
-    useMeta({
-      title: 'Free EIS - Build your enterprise information system freely.',
     });
-
-    const locale = computed(() => store.locale || Quasar.lang.getLocale().toLowerCase() || 'zh-cn');
 
     return () =>
       h('div', {
@@ -98,7 +90,7 @@ export default defineComponent({
       },
       [
         h(HtmlContent, {
-          html: marked(docs[locale.value][props.target])
+          html: marked(docs[i18n.locale.value][props.target])
         }),
         h('div', {
           class:"contribute-info q-pa-md q-ma-lg text-center",

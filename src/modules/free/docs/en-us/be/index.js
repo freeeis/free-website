@@ -1,1 +1,1 @@
-export default '# BE'
+export default '## This part is still in development...'

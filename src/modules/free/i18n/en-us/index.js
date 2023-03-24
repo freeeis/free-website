@@ -1,5 +1,6 @@
 export default {
   slogan: 'Build your enterprise information system freely!',
+  websiteTitle : 'FreeEIS - Build enterprise information system freely',
   Home: 'Home',
   Locale: 'Locale',
   Introduction: 'Introduction',

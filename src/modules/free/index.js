@@ -1,4 +1,42 @@
+import { h } from 'vue';
+import drawer from './view/components/drawer.vue';
+
+
+const feMenus = [
+
+  {
+    label: 'Introduction',
+    icon: '',
+    link: '/fe#Introduction',
+  },
+  {
+    label: '安装运行',
+    icon: '',
+    link: '/fe#安装运行',
+  },
+  {
+    label: 'c1',
+    icon: '',
+    link: '/fe#1',
+  },
+  {
+    label: 'c1',
+    icon: '',
+    link: '/fe#1',
+  }
+];
+
+const beMenus = [
+  {
+    label: 'BE',
+    link: '/be'
+  }
+];
+
 export default {
+  config: {
+    dependencies: ['core-modules', 'themes'],
+  },
   routers: [
     {
       path: '/',
@@ -13,7 +51,6 @@ export default {
         {
           path: 'intro',
           components: {
-            // drawer: () => import('./view/components/drawer.vue'),
             page: () => import('./view/guide')
           },
           props: {
@@ -25,14 +62,18 @@ export default {
         {
           path: 'fe',
           components: {
-            // drawer: () => import('./view/components/drawer.vue'),
+            // drawer: h(drawer, {
+            //   menus: feMenus,
+            // }),
             page: () => import('./view/guide')
           }
         },
         {
           path: 'be',
           components: {
-            // drawer: () => import('./view/components/drawer.vue'),
+            // drawer: h(drawer, {
+            //   menus: beMenus,
+            // }),
             page: () => import('./view/guide')
           },
           props: {

@@ -1,9 +1,7 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <q-header reveal bordered class="bg-white text-primary">
+    <q-header reveal bordered class="">
       <q-toolbar>
-        <!-- <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" /> -->
-
         <q-toolbar-title class="cursor-pointer row items-center" @click="$router.push('/')">
           <q-avatar class="q-mr-sm">
             <img src="logo.png" style="border: 1px solid #0078DC30; border-radius: 50%;" >
@@ -16,16 +14,10 @@
         <q-btn :label="$t('FE')" flat dense to="/fe" class="q-mx-sm" icon="article"></q-btn>
         <q-btn :label="$t('BE')" flat dense to="/be" class="q-mx-sm" icon="api"></q-btn>
 
-        <q-btn :label="$t('Locale')" flat dense class="q-mx-sm" icon="language">
-          <q-menu>
-            <q-list>
-              <q-item clickable v-close-popup @click="localeChanged('zh-cn')">中文</q-item>
-              <q-item clickable v-close-popup @click="localeChanged('en-us')">English</q-item>
-            </q-list>
-          </q-menu>
-        </q-btn>
+        <select-locales class="q-mx-sm"></select-locales>
+        <theme-switch></theme-switch>
 
-        <q-btn label="" flat dense @click="toGithub" class="q-mx-sm"
+        <q-btn label="" flat dense @click="toGithub" class="q-mx-md"
           icon="fab fa-github"></q-btn>
       </q-toolbar>
     </q-header>
@@ -40,30 +32,39 @@
 </template>
 
 <script>
-import { defineComponent, ref, getCurrentInstance } from 'vue';
-import useAppStore from '@/stores/app';
+import { defineComponent, ref, watch, computed } from 'vue';
+import { useMeta } from 'quasar';
+import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
 
 export default defineComponent({
   name: 'NormalLayout',
   setup () {
-    const vm = getCurrentInstance();
-    const leftDrawerOpen = ref(false);
-    const store = useAppStore();
+    const i18n = useI18n();
+    const title = ref(i18n.t('websiteTitle'));
+    const route = useRoute();
 
-    const localeChanged = (l) => {
-      vm.proxy.$i18n.locale = l;
-      store.SET_LOCALE(l)
-    }
+    useMeta(() => ({
+      title: title.value
+    }));
+
+    watch(i18n.locale, () => {
+      title.value = i18n.t('websiteTitle');
+    });
+
+    const leftDrawerOpen = ref(true);
 
     return {
       toGithub: () => {
         window.open('https://github.com/freeeis','_blank');
       },
-      localeChanged,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
       },
+      showDrawerToggleBtn: computed(() => {
+        return ['/fe','/be'].indexOf(route.fullPath) >= 0;
+      })
     }
   }
 })

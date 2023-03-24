@@ -27,10 +27,6 @@ export default {
       locale: 'en-us',
       name: 'English',
     },
-    {
-      locale: 'br',
-      name: 'BR'
-    }
   ],
   i18n: {
     'en-us': {

@@ -1,0 +1,43 @@
+.free-theme-EISThemeDefault {
+  background: #1a1a1a;
+
+  .q-header {
+    background-color: #1a1a1a;
+    color: white;
+
+    .q-btn {
+      &:hover {
+        color: var(--q-primary);
+      }
+    }
+  }
+
+  .q-drawer {
+    background-color: #1a1a1a;
+    color: #DDD;
+  }
+
+  .freeeis-docs.theme-default-content {
+    color: #DDD;
+
+    pre {
+      background-color: #222;
+    }
+    code  {
+      color: #CCC;
+    }
+
+    a {
+      color: var(--q-primary);
+    }
+
+    table {
+      tr {
+        &:nth-child(2n) td {
+          background-color: #222;
+        }
+      }
+    }
+  }
+
+}

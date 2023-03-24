@@ -9,11 +9,11 @@
           <span class="site-name-text">FreeEIS</span>
         </q-toolbar-title>
         <q-space></q-space>
-        <q-btn :label="$t('Home')" flat dense to="/" class="menu-home-btn q-mx-sm" icon="home"></q-btn>
+        <q-btn :label="$t('Home')" flat dense to="/" class="menu-home-btn q-mx-sm" icon="home_work"></q-btn>
         <q-btn :label="$t('Introduction')" flat dense to="/intro" class="q-mx-sm" icon="preview"></q-btn>
-        <q-btn :label="$t('FE')" flat dense to="/fe" class="q-mx-sm" icon="article"></q-btn>
-        <q-btn :label="$t('BE')" flat dense to="/be" class="q-mx-sm" icon="api"></q-btn>
-        <q-btn :label="$t('Integration')" flat dense to="/integration" class="q-mx-sm" icon="api"></q-btn>
+        <q-btn :label="$t('FE')" flat dense to="/fe" class="q-mx-sm" icon="grid_view"></q-btn>
+        <q-btn :label="$t('BE')" flat dense to="/be" class="q-mx-sm" icon="route"></q-btn>
+        <q-btn :label="$t('Integration')" flat dense to="/integration" class="q-mx-sm" icon="integration_instructions"></q-btn>
 
         <select-locales class="menu-locale-btn q-mx-sm"></select-locales>
         <theme-switch class="menu-theme-btn"></theme-switch>

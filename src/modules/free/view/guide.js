@@ -1,4 +1,4 @@
-import { defineComponent, h } from 'vue';
+import { defineComponent, h, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { marked } from 'marked';
 
@@ -84,13 +84,20 @@ export default defineComponent({
       }
     });
 
+    const docContent = computed(() => {
+      console.log(i18n.locale)
+      const doc = docs[i18n.locale?.value];
+
+      return doc ? doc[props.target] : '';
+    });
+
     return () =>
       h('div', {
         class: 'freeeis-docs theme-default-content full-width full-height q-pb-xl',
       },
       [
         h(HtmlContent, {
-          html: marked(docs[i18n.locale.value][props.target])
+          html: marked(docContent.value)
         }),
         h('div', {
           class:"contribute-info q-pa-md q-ma-lg text-center",

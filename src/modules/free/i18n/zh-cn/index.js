@@ -1,6 +1,6 @@
 export default {
-  slogan: '自由地构建您的企业级信息化系统！',
-  websiteTitle : 'FreeEIS - 自由构建企业级信息化系统',
+  slogan: '自由地构建您的企业级数字化系统！',
+  websiteTitle : 'FreeEIS - 自由构建企业级数字化系统',
   Home: '首页',
   Locale: '语言',
   Introduction: '介绍',

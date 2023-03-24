@@ -13,6 +13,7 @@
         <q-btn :label="$t('Introduction')" flat dense to="/intro" class="q-mx-sm" icon="preview"></q-btn>
         <q-btn :label="$t('FE')" flat dense to="/fe" class="q-mx-sm" icon="article"></q-btn>
         <q-btn :label="$t('BE')" flat dense to="/be" class="q-mx-sm" icon="api"></q-btn>
+        <q-btn :label="$t('Integration')" flat dense to="/integration" class="q-mx-sm" icon="api"></q-btn>
 
         <select-locales class="q-mx-sm"></select-locales>
         <theme-switch></theme-switch>

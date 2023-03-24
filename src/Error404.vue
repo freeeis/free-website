@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-center text-center">
+  <div class="fixed-center text-center page-404">
     <p>
       <q-icon
         name="not_interested"

@@ -1,6 +1,10 @@
 .free-theme-EISThemeDefault {
   background: #1a1a1a;
 
+  &.page-404 {
+    background-color: unset !important;
+  }
+
   .q-header {
     background-color: #1a1a1a;
     color: white;

@@ -81,6 +81,20 @@ export default {
               target: 'be'
             }
           }
+        },
+        {
+          path: 'integration',
+          components: {
+            // drawer: h(drawer, {
+            //   menus: beMenus,
+            // }),
+            page: () => import('./view/guide')
+          },
+          props: {
+            page: {
+              target: 'integration'
+            }
+          }
         }
       ]
     }

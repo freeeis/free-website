@@ -25,7 +25,7 @@ export default defineComponent({
           })),
           h('div', {
             class: 'text-center text-h2 text-grey'
-          }, 'FREE EIS'),
+          }, 'Free EIS'),
           h('div', {
             class: 'text-center text-h6 text-grey-5 q-mt-md'
           }, i18n.t('slogan'))

@@ -1,6 +1,7 @@
 import { defineComponent, h, computed, ref, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { marked } from 'marked';
+import { Screen } from 'quasar';
 
 import docs from '../docs';
 import HtmlContent from '../view/components/htmlContent.vue';
@@ -97,7 +98,7 @@ export default defineComponent({
         h('div', {
           class: 'row full-width full-height no-wrap col',
         },[
-          h(drawer, {
+          Screen.width < 600 ? null : h(drawer, {
             menus: tocList.value,
             open: true,
           }),

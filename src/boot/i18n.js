@@ -65,6 +65,14 @@ export default boot((ctx) => {
   if (ctx.app.i18nMessages) {
     Object.keys(ctx.app.i18nMessages).forEach((ik) => {
       i18n.global.setLocaleMessage(ik, { ...ctx.app.i18nMessages[ik], ...(messages[ik] || {}) });
+
+      // if not exists in config, add to the list
+      if (config.locales.findIndex((l) => l.locale === ik) < 0) {
+        config.locales.push({
+          name: ik,
+          locale: ik,
+        })
+      }
     });
   } else {
     console.error(ctx.app)

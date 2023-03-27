@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh lpR fFf">
+  <q-layout view="hHh LpR fFf">
     <q-header reveal bordered class="">
       <q-toolbar>
         <q-toolbar-title class="site-title cursor-pointer row items-center" @click="$router.push('/')">
@@ -22,8 +22,6 @@
           icon="fab fa-github"></q-btn>
       </q-toolbar>
     </q-header>
-
-    <router-view name="drawer" :open="leftDrawerOpen" above />
 
     <q-page-container>
       <router-view name="page"/>
@@ -53,19 +51,10 @@ export default defineComponent({
       title.value = i18n.t('websiteTitle');
     });
 
-    const leftDrawerOpen = ref(true);
-
     return {
       toGithub: () => {
         window.open('https://github.com/freeeis','_blank');
       },
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      },
-      showDrawerToggleBtn: computed(() => {
-        return ['/fe','/be'].indexOf(route.fullPath) >= 0;
-      })
     }
   }
 })

@@ -1,56 +1,13 @@
-import { defineComponent, h, computed } from 'vue';
+import { defineComponent, h, computed, ref, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { marked } from 'marked';
 
 import docs from '../docs';
 import HtmlContent from '../view/components/htmlContent.vue';
+import drawer from '../view/components/drawer.vue';
 
 import './vue.css';
 import './highlight.css';
-
-const tocObj = {
-  add: function(text, level) {
-    var anchor = `#toc${level}${++this.index}`;
-    this.toc.push({anchor, level, text});
-    return anchor;
-  },
-  toHTML: function(){
-    let levelStack = [];
-    let result = '';
-    const addStartUL = () => { result += '<ul>'; };
-    const addEndUL = () => { result += '</ul>\n'; };
-    const addLI = (anchor, text) => { result += '<li><a href="#' + anchor + '">' + text + '<a></li>\n'; };
-
-    this.toc.forEach(function(item){
-      let levelIndex = levelStack.indexOf(item.level);
-      if(levelIndex === -1) {
-        levelStack.unshift(item.level);
-        addStartUL();
-        addLI(item.anchor, item.text);
-      } else if (levelIndex === 0) {
-        addLI(item.anchor, item.text);
-      } else {
-        while(levelIndex --) {
-          levelStack.shift();
-          addEndUL();
-        }
-        addLI(item.anchor, item.text);
-      }
-    });
-
-    while(levelStack.length) {
-      levelStack.shift();
-      addEndUL();
-    }
-
-    this.toc = [];
-    this.index = 0;
-
-    return result;
-  },
-  toc: [],
-  index: 0,
-}
 
 export default defineComponent({
   name: "FreeWebsiteGuide",
@@ -63,8 +20,25 @@ export default defineComponent({
   setup(props) {
     const i18n = useI18n();
 
+    // toc
+    const toc = ref([]);
+
+    const addToc = (text, level) => {
+      toc.value.push({level, text});
+    };
+
+    const renderer = new marked.Renderer();
+    renderer.heading = function(text, level, raw){
+        addToc(text, level);
+        return `<a id=${text} class="anchor-point"></a><h${level}>${text}</h${level}>\n`
+    };
+
+    const highlight = function(c){
+      return require('highlight.js').highlightAuto(c).value;
+    };
+
     marked.setOptions ({
-      renderer: new marked.Renderer(),
+      renderer,
       gfm: true ,
       tables: true ,
       breaks: false ,
@@ -72,30 +46,43 @@ export default defineComponent({
       sanitize: false ,
       smartLists: true ,
       smartypants: false,
-      highlight: function(code){
-        return require('highlight.js').highlightAuto(code).value;
-      },
-      heading: function(text, level, raw){
-        const anchor = tocObj.add(text, level);
-        return `<a id=${anchor} class="anchor-fix"></a><h${level}>${text}</h${level}>\n`
-      }
+      highlight,
     });
 
     const docContent = computed(() => {
-      console.log(i18n.locale)
       const doc = docs[i18n.locale?.value];
 
       return doc ? doc[props.target] : '';
     });
 
+    const htmlText = ref('');
+
+    watchEffect(() => {
+      toc.value = [];
+      htmlText.value = marked(docContent.value);
+    })
+
+    const tocList = computed(() => {
+      return toc.value;
+    });
+
     return () =>
       h('div', {
-        class: 'freeeis-docs theme-default-content full-width full-height q-pb-xl',
+        class: 'freeeis-docs theme-default-content full-width full-height q-pb-xl column',
       },
       [
-        h(HtmlContent, {
-          html: marked(docContent.value)
-        }),
+        h('div', {
+          class: 'row full-width full-height no-wrap col',
+        },[
+          h(drawer, {
+            menus: tocList.value,
+            open: true,
+          }),
+          h(HtmlContent, {
+            html: htmlText.value,
+            class: 'col',
+          }),
+        ]),
         h('div', {
           class:"contribute-info q-pa-md q-ma-lg text-center",
           style: 'border: 1px solid #E1E1E1'

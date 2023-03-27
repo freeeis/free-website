@@ -1,28 +1,15 @@
 <template>
   <q-drawer :show-if-above="above" v-model="openDrawer" side="left" bordered>
-    <q-list>
-      <q-expansion-item
+    <q-scroll-area class="full-height">
+      <q-item
+        clickable
+        :class="`lv-${menu.level || 1} ${currentSelected === menu.text ? 'text-primary' : ''}`"
         v-for="(menu, idx) in menus" :key="idx"
-        :icon="menu.icon"
-        :label="$t(menu.label || '')"
-        :caption="$t(menu.caption||'')"
-        :default-opened="idx === 0"
-        @click="menu.link && $router.push(menu.link)"
+        @click="toTitle(menu)"
         >
-        <q-item
-          clickable
-          v-for="(cmenu, cidx) in menu.children || []" :key="cidx"
-          @click="cmenu.link && $router.push(cmenu.link)"
-          class="q-ml-lg">
-          {{$t(cmenu.label || '')}}
-        </q-item>
-        <!-- <div
-          v-for="(cmenu, cidx) in menu.children || []" :key="cidx">
-        <a
-          :href="`fe#${cmenu.label || ''}`">{{cmenu.label}}</a>
-          </div> -->
-      </q-expansion-item>
-    </q-list>
+        {{ menu.text || '' }}
+      </q-item>
+    </q-scroll-area>
   </q-drawer>
 </template>
 
@@ -42,14 +29,60 @@ export default defineComponent({
   },
   setup(props) {
     const openDrawer = ref(props.open);
+    const currentSelected = ref(null);
 
     watch(() => props.open, (v) => {
       openDrawer.value = v;
     })
 
     return {
-      openDrawer
+      openDrawer,
+      currentSelected,
+      toTitle: (m) => {
+        if (m && m.text) {
+          const el = document.getElementById(m.text);
+          if (el) {
+            window.scroll({
+              top: el.offsetTop - (window.scrollY > el.offsetTop ? 60 : 0),
+              left: 0,
+              behavior: 'smooth'
+            });
+
+            currentSelected.value = m.text;
+          }
+        }
+      },
     }
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.lv-2 {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  padding-top: 16px;
+}
+
+.lv-3 {
+  font-size: 13px;
+  line-height: 13px;
+  opacity: 0.8;
+  padding-left: 32px;
+}
+
+.lv-4 {
+  font-size: 13px;
+  line-height: 13px;
+  opacity: 0.8;
+  padding-left: 48px;
+}
+
+.lv-5 {
+  font-size: 13px;
+  line-height: 13px;
+  opacity: 0.8;
+  padding-left: 64px;
+}
+</style>

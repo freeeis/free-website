@@ -52,27 +52,31 @@ export default {
         class: 'text-center q-mb-xl'
       }, ['FreeEIS 前端开发']),
 
-      h(QCarousel, {
-        class: 'q-mt-md',
-        height: '200px',
+      h('div', {
+        class: 'row full-width items-center justify-center'
+      }, [
+        h(QCarousel, {
+          class: 'q-mt-md',
+          height: '200px',
 
-        style: 'background: unset',
+          style: 'background: unset;max-width: 542px',
 
-        'transition-prev': 'slide-right',
-        'transition-next': 'slide-left',
+          'transition-prev': 'slide-right',
+          'transition-next': 'slide-left',
 
-        animated: true,
-        infinite: true,
-        swipeable: true,
-        autoplay: 3500,
+          animated: true,
+          infinite: true,
+          swipeable: true,
+          autoplay: 3500,
 
-        modelValue: currentSlide.value,
-        'onUpdate:model-value': (val) => {
-          currentSlide.value = val;
+          modelValue: currentSlide.value,
+          'onUpdate:model-value': (val) => {
+            currentSlide.value = val;
+          },
         },
-      },
-      () => images,
-      ),
+        () => images,
+        ),
+      ])
     ]
   },
 }

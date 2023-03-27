@@ -49,17 +49,40 @@ export default defineComponent({
       highlight,
     });
 
-    const docContent = computed(() => {
-      const doc = docs[i18n.locale?.value];
+    const preComponents = ref([]);
+    const postComponents = ref([]);
 
-      return doc ? doc[props.target] : '';
+    const docContent = computed(() => {
+      let doc = docs[i18n.locale?.value];
+      doc = doc && doc[props.target];
+
+      return doc || '';
     });
+
+    watchEffect(() => {
+      const preComps = docContent.value.preComponents;
+
+      if (typeof preComps === 'function') {
+        preComponents.value = preComps();
+      } else {
+        preComponents.value = preComps || [];
+      }
+
+
+      const postComps = docContent.value.postComponents;
+
+      if (typeof postComps === 'function') {
+        postComponents.value = postComps();
+      } else {
+        postComponents.value = postComps || [];
+      }
+    })
 
     const htmlText = ref('');
 
     watchEffect(() => {
       toc.value = [];
-      htmlText.value = marked(docContent.value);
+      htmlText.value = marked(docContent.value.c || docContent.value);
     })
 
     const tocList = computed(() => {
@@ -78,10 +101,20 @@ export default defineComponent({
             menus: tocList.value,
             open: true,
           }),
-          h(HtmlContent, {
-            html: htmlText.value,
-            class: 'col',
-          }),
+
+          h('div', {
+            class: 'full-width',
+          },
+          [
+            ...preComponents.value,
+
+            h(HtmlContent, {
+              html: htmlText.value,
+              class: 'col',
+            }),
+
+            ...postComponents.value,
+          ]),
         ]),
         h('div', {
           class:"contribute-info q-pa-md q-ma-lg text-center",
